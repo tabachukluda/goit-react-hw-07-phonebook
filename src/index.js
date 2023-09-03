@@ -1,10 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { App } from 'components/App';
-import './index.css';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import App from './components/App';
+import contactssliceReducer from './redux/contactsslice';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+const store = configureStore({
+  reducer: {
+    contacts: contactssliceReducer,
+  },
+});
+
+ReactDOM.render(
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>,
+  document.getElementById('root')
 );
