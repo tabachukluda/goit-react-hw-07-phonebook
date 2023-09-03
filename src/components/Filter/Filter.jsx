@@ -1,14 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilter } from 'redux/contactsslice';
+import { setFilter } from 'redux/contactsslice'; 
 import css from './Filter.module.css';
 
 export const Filter = () => {
     const dispatch = useDispatch();
     const filter = useSelector((state) => state.contacts.filter);
 
-    const handleChange = (value) => {
-    dispatch(setFilter(value));
+    const handleChange = (event) => { 
+    dispatch(setFilter(event.target.value));
     };
 
     return (
@@ -23,7 +23,7 @@ export const Filter = () => {
         name="filter"
         placeholder="Enter filter"
         value={filter}
-        onChange={(event) => handleChange(event.target.value)}
+        onChange={handleChange}
         aria-label="Filter contacts by name"
         />
     </div>
